@@ -38,9 +38,9 @@ pipeline {
                             parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                         }
 
-                        bat 'terraform ${action} -input=false tfplan'
+                        bat 'terraform apply -input=false tfplan'
                     } else if (params.action == 'destroy') {
-                        bat 'terraform ${action} --auto-approve'
+                        bat 'terraform destroy --auto-approve'
                     } else {
                         error "Invalid action selected. Please choose either 'apply' or 'destroy'."
                     }
